@@ -14,7 +14,9 @@ const Question = ({ key, singlequestion }) => {
 		const TrickAnswer = e.target.innerText;
 		if (TrickAnswer === correctAnswer) {
 			alert("Answer is correct");
-		} 
+		} else {
+			alert("Answer is incorrect");
+		}
 	};
 
 	return (
