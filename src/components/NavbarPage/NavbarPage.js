@@ -8,7 +8,7 @@ const NavbarPage = () => {
 					<Navbar.Brand href="/">GoExam</Navbar.Brand>
 					<Nav className=" ">
 						<Nav.Link href="/">Home</Nav.Link>
-						<Nav.Link href="topics">Topics</Nav.Link>
+						<Nav.Link href="/topics">Topics</Nav.Link>
 						<Nav.Link href="/Blog">Blog</Nav.Link>
 					</Nav>
 				</Container>

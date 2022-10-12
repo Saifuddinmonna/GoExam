@@ -3,7 +3,7 @@ import React from 'react';
 const Blog = () => {
         return (
 			<div className="container">
-				<h2>thid is blog</h2>
+				<h2>This is Munna Blog</h2>
 				<div className="m position-relative">
 					<img
 						className="image-controlar h-40 w-100 object-cover border shadow-sm rounded-md "

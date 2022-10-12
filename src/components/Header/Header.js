@@ -15,7 +15,8 @@ const Header = () => {
 						Come with Us To Learn
 					</p>
 				</div> */}
-			</div>
+                        </div>
+                        <div className="image"   ></div>
 		</div>
 	);
 };
