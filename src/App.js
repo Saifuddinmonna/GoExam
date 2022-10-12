@@ -8,6 +8,7 @@ import Blog from "./components/Blog/Blog";
 import ExamSubjects from "./components/ExamSubjects/ExamSubjects";
 import Header from "./components/Header/Header";
 import Erroralert from "./components/Erroralert/Erroralert";
+import Statistics from "./components/Statistics/Statistics";
 
 function App() {
 	const router = createBrowserRouter([
@@ -46,16 +47,26 @@ function App() {
 					},
 					element: <Questions></Questions>,
 				},
+
+				{
+					path: "/statistics",
+					loader: async () => {
+						return fetch(
+							"https://openapi.programming-hero.com/api/quiz",
+						);
+					},
+					element: <Statistics></Statistics>,
+				},
 				{
 					path: "*",
 					element: <Erroralert></Erroralert>,
 				},
 			],
 		},
-		{
-			path: "*",
-			element: <Erroralert></Erroralert>,
-		},
+		// {
+		// 	path: "*",
+		// 	element: <Erroralert></Erroralert>,
+		// },
 	]);
 
 	return (

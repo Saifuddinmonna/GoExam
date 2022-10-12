@@ -9,6 +9,7 @@ const NavbarPage = () => {
 					<Nav className=" ">
 						<Nav.Link href="/">Home</Nav.Link>
 						<Nav.Link href="/topics">Topics</Nav.Link>
+						<Nav.Link href="/statistics">Statistics</Nav.Link>
 						<Nav.Link href="/Blog">Blog</Nav.Link>
 					</Nav>
 				</Container>
