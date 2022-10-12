@@ -1,5 +1,6 @@
 import { click } from "@testing-library/user-event/dist/click";
 import React from "react";
+import { EyeIcon } from "@heroicons/react/24/solid";
 
 const Question = ({ key, singlequestion }) => {
 	const { options, id, question, correctAnswer } = singlequestion;
@@ -13,9 +14,7 @@ const Question = ({ key, singlequestion }) => {
 		const TrickAnswer = e.target.innerText;
 		if (TrickAnswer === correctAnswer) {
 			alert("Answer is correct");
-		} else {
-			alert("Answer is incorrect");
-		}
+		} 
 	};
 
 	return (
@@ -26,7 +25,7 @@ const Question = ({ key, singlequestion }) => {
 				data-tooltip-target="tooltip-default"
 				className=" btn-sm cursor-pointer position-absolute rounded-circle border border-red-400 border-4 bg-blue-100 top-0 left-0 ">
 				{" "}
-				ANS
+				<EyeIcon className="h-6 w-6 text-blue-500" />
 			</div>
 
 			<div></div>
