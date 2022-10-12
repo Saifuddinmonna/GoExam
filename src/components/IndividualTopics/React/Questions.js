@@ -1,15 +1,22 @@
+import { click } from "@testing-library/user-event/dist/click";
 import React from "react";
 
 const Question = ({ key, singlequestion }) => {
 	const { options, id, question, correctAnswer } = singlequestion;
-console.log(correctAnswer);
-	const ShowcorrectAnswer = (  correctAnswer ) => {
-                
-                alert( `Correct Answer is : ${correctAnswer }`);
-        };
-        const AnswerCheck = () => {
-                
-        }
+	console.log(correctAnswer);
+	const ShowcorrectAnswer = (correctAnswer) => {
+		alert(`Correct Answer is : ${correctAnswer}`);
+	};
+	const AnswerCheck = (e) => {
+		console.log(correctAnswer);
+		console.log(e.target.innerText);
+		const TrickAnswer = e.target.innerText;
+		if (TrickAnswer === correctAnswer) {
+			alert("Answer is correct");
+		} else {
+			alert("Answer is incorrect");
+		}
+	};
 
 	return (
 		<div className="position-relative border m-3 p-3 rounded-xl shadow-lg bg-orange-50 ">
@@ -29,7 +36,9 @@ console.log(correctAnswer);
 				<div>
 					{options.map((singleoption) => (
 						<ol>
-							<li onClick={()=> AnswerCheck()} className="btn  w-full btn-outline-info list-group-numbered  ">
+							<li
+								onClick={AnswerCheck}
+								className="btn  w-full btn-outline-info list-group-numbered  ">
 								{singleoption}
 							</li>
 						</ol>
