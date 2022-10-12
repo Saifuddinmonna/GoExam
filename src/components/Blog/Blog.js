@@ -5,14 +5,8 @@ const Blog = () => {
 			<div className="container">
 				<h2>This is Munna Blog</h2>
 				<div className="m position-relative">
-					<img
-						className="image-controlar h-40 w-100 object-cover border shadow-sm rounded-md "
-						src="https://unsplash.com/photos/MPKQiDpMyqU/download?ixid=MnwxMjA3fDB8MXxzZWFyY2h8MTl8fGNvZGluZyUyMHdhbGxwYXBlcnxlbnwwfHx8fDE2NjU1NjkxMjk&force=true"
-						alt=""
-					/>
-					<div className="position-absolute top-24 left-52">
-						<p>Come with Us To Learn</p>
-					</div>
+					
+					
 
 					<div className="fs-3 p-2 m-3">
 						What's the purpose of using React.js?
