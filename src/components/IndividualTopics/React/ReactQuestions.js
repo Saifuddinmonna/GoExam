@@ -7,7 +7,7 @@ const Questions = () => {
 	const questions = react.data.questions;
 	console.log(questions);
 	return (
-		<div>
+		<div className="grid grid-cols-2" >
 			{questions.map((singlequestion) => (
 				<Question
 					key={singlequestion.id}
