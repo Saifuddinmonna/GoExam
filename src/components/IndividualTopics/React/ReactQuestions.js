@@ -1,13 +1,14 @@
-import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React from "react";
+import { useLoaderData } from "react-router-dom";
 
-const ReactQuestions = () => {
-        const react = useLoaderData();
-        return (
-                <div>
-                        
-                </div>
-        );
+const Questions = () => {
+	const react = useLoaderData();
+	console.log(react);
+	return (
+		<div>
+			<h2>this is react question </h2>
+		</div>
+	);
 };
 
-export default ReactQuestions;
+export default Questions;
