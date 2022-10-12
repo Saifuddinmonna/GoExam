@@ -1,10 +1,11 @@
 import React from "react";
+import ExamSubjects from "../ExamSubjects/ExamSubjects";
 import NavbarPage from "../NavbarPage/NavbarPage";
 
 const Home = () => {
 	return (
 		<div>
-			<h3>this is homepage</h3>
+			
 			<NavbarPage></NavbarPage>
 			<div className="m">
 				<img
@@ -12,7 +13,8 @@ const Home = () => {
 					src="https://unsplash.com/photos/MPKQiDpMyqU/download?ixid=MnwxMjA3fDB8MXxzZWFyY2h8MTl8fGNvZGluZyUyMHdhbGxwYXBlcnxlbnwwfHx8fDE2NjU1NjkxMjk&force=true"
 					alt=""
 				/>
-			</div>
+                        </div>
+                        <ExamSubjects > </ExamSubjects>
 		</div>
 	);
 };
