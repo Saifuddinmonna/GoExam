@@ -1,31 +1,30 @@
-import React from 'react';
+import React from "react";
 
 const Blog = () => {
-        return (
-			<div className="container">
-				<h2>This is Munna Blog</h2>
-				<div className="m position-relative">
-					
-					
-
-					<div className="fs-3 p-2 m-3">
-						What's the purpose of using React.js?
-					</div>
-					<div>
-						Imagine you are building a commenting widget for Quora.
-						You would split it up to components like Toolbar,
-						TextArea, toolbar tools (I won't iterate these),
-						SocialWidget, Submit and so on. You would also set up
-						some logic in place. React allows you to do exactly just
-						this. It is a component oriented abstraction and it
-						solves the view portion of frontend web development. It
-						is possible to use it in other domains as well (mobile
-						and so on) although DOM is the most popular target at
-						the moment. It is not tied to DOM by design, though, so
-						on abstract level it's just a component abstraction.
-					</div>
+	return (
+		<div className="container blog-container">
+			<h2 className="border shadow bg-red-50 rounded-full m-3 p-3">
+				This is Munna Blog
+			</h2>
+			<div className="border shadow bg-red-50 rounded-xl m-3 p-3">
+				<div className="fs-3 p-2 m-3">
+					What's the purpose of using React.js?
 				</div>
-
+				<div>
+					Imagine you are building a commenting widget for Quora. You
+					would split it up to components like Toolbar, TextArea,
+					toolbar tools (I won't iterate these), SocialWidget, Submit
+					and so on. You would also set up some logic in place. React
+					allows you to do exactly just this. It is a component
+					oriented abstraction and it solves the view portion of
+					frontend web development. It is possible to use it in other
+					domains as well (mobile and so on) although DOM is the most
+					popular target at the moment. It is not tied to DOM by
+					design, though, so on abstract level it's just a component
+					abstraction.
+				</div>
+			</div>
+			<div className="border shadow bg-red-50 rounded-xl m-3 p-3">
 				<div className="fs-3 p-2 m-3">How React Context API Works?</div>
 				<div>
 					React Context provides a way to pass data through the
@@ -40,6 +39,9 @@ const Blog = () => {
 					However, finally, we have good news….React 16 context APIs
 					are public and good for any application.
 				</div>
+			</div>
+
+			<div className="border shadow bg-red-50 rounded-xl m-3 p-3">
 				<div className="fs-3 p-2 m-3">What is the useRef hook?</div>
 				<div>
 					The useRef is a hook that allows to directly create a
@@ -55,7 +57,8 @@ const Blog = () => {
 					</p>
 				</div>
 			</div>
-		);
+		</div>
+	);
 };
 
 export default Blog;

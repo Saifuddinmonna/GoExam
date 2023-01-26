@@ -1,0 +1,10 @@
+.active-color {
+	color: red;
+	text-shadow: 10px;
+}
+.min-widthheader {
+	min-width: 380px;
+}
+.blog-container {
+	min-width: 380px;
+}

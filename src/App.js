@@ -20,7 +20,19 @@ function App() {
 				{
 					path: "/",
 					element: <Header></Header>,
+					children: [
+						{
+							path: "/",
+							loader: async () => {
+								return fetch(
+									"https://openapi.programming-hero.com/api/quiz",
+								);
+							},
+							element: <ExamSubjects></ExamSubjects>,
+						},
+					],
 				},
+
 				{
 					path: "/topics",
 					loader: async () => {
@@ -39,6 +51,16 @@ function App() {
 
 				{
 					path: "/questions/:id",
+					loader: ({ params }) => {
+						console.log(params);
+						return fetch(
+							`https://openapi.programming-hero.com/api/quiz/${params.id}`,
+						);
+					},
+					element: <Questions></Questions>,
+				},
+				{
+					path: "/",
 					loader: ({ params }) => {
 						console.log(params);
 						return fetch(

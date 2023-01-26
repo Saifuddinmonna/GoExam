@@ -7,7 +7,7 @@ const ExamSubjects = () => {
 	console.log(topics);
 
 	return (
-		<div>
+		<div className="min-widthheader lg:grid lg:grid-cols-2 xl:grid xl:grid-cols-3 2xl:grid-cols-4 ">
 			{topics.data.map((topic) => (
 				<Topics4 key={topic.id} topic={topic}></Topics4>
 			))}

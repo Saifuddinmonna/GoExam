@@ -2,7 +2,7 @@ import { click } from "@testing-library/user-event/dist/click";
 import React from "react";
 import { EyeIcon } from "@heroicons/react/24/solid";
 
-const Question = ({ key, singlequestion }) => {
+const Question = ({ singlequestion }) => {
 	const { options, id, question, correctAnswer } = singlequestion;
 	console.log(correctAnswer);
 	const ShowcorrectAnswer = (correctAnswer) => {
@@ -13,21 +13,29 @@ const Question = ({ key, singlequestion }) => {
 		console.log(e.target.innerText);
 		const TrickAnswer = e.target.innerText;
 		if (TrickAnswer === correctAnswer) {
-			alert("Answer is correct");
+			setTimeout(() => {
+				alert("Answer is correct");
+			}, 400);
+			clearInterval(alert);
 		} else {
-			alert("Answer is incorrect");
+			setTimeout(() => {
+				alert("Answer is incorrect");
+			}, 400);
 		}
 	};
 
+	
+
 	return (
-		<div className="position-relative border m-3 p-3 rounded-xl shadow-lg bg-orange-50 ">
+		<div className=" min-widthheader position-relative border m-3 p-3 rounded-xl shadow-lg bg-orange-50 mx-2 ">
 			<div></div>
 			<div
 				onClick={() => ShowcorrectAnswer(correctAnswer)}
 				data-tooltip-target="tooltip-default"
+				min-widthheader
 				className=" btn-sm cursor-pointer position-absolute rounded-circle border border-red-400 border-4 bg-blue-100 top-0 left-0 ">
 				{" "}
-				<EyeIcon className="h-6 w-6 text-blue-500" />
+				<EyeIcon className="h-4 w-4 text-blue-500" />
 			</div>
 
 			<div></div>
@@ -35,8 +43,8 @@ const Question = ({ key, singlequestion }) => {
 			<div>
 				<p>{question}</p>
 				<div>
-					{options.map((singleoption) => (
-						<ol>
+					{options.map((singleoption,Index) => (
+						<ol key={Index}>
 							<li
 								onClick={AnswerCheck}
 								className="btn  w-full btn-outline-info list-group-numbered  ">
