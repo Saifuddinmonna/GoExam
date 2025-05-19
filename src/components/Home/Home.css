@@ -1,0 +1,13 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.content-wrapper {
+  flex: 1 0 auto;
+  width: 100%;
+  padding-bottom: 2rem; /* Add some padding at the bottom */
+} 

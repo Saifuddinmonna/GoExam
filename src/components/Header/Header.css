@@ -1,21 +1,89 @@
-.bgpic {
-	background-color: blue;
-	width: 100%;
-	height: 10%;
+/* Import a modern font if not already imported globally */
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap'); */
+/* Assuming Poppins is available from the Footer CSS or globally */
+
+.header-container {
+  /* If .min-widthheader is still needed from its old definition, ensure it's applied or merged.
+     The JS component still has `min-widthheader` class on the root div.
+     The old .min-widthheader was: min-width: 380px;
+     We can keep it or integrate it if necessary. For now, this CSS focuses on the banner. */
+  font-family: 'Poppins', sans-serif; /* Use a modern font */
 }
-.image {
-	background-image: url("../../../public/bgimage.jpg.jpg");
-	width: 100;
-	min-height: 20%;
-	object-fit: contain;
+
+.banner {
+  position: relative;
+  overflow: hidden; /* Ensures image corners are rounded if container has border-radius */
+  max-height: 400px; /* Adjust height as needed */
+  margin: 1rem; /* Matches the old m-1 class if it was applied via Tailwind/Bootstrap */
+  border-radius: 0.5rem; /* Matches old rounded-md class */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Matches old shadow-md class */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.top-left {
-	top: 20%;
-	left: 30%;
+
+.banner-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cover the container */
+  display: block; /* Remove extra space below image */
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
+}
+
+.banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center text */
+  text-align: center;
+  color: white; /* White text */
+  z-index: 1; /* Ensure text is above overlay */
+  font-size: 2.5rem; /* Adjust size as needed */
+  font-weight: 700; /* Bold font */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow for readability */
+  animation: fadeInText 1s ease-out; /* Add a fade-in animation */
+}
+
+/* Animation for text */
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -30px); /* Start slightly above center */
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%); /* End at center */
+  }
+}
+
+/* Optional: Add a subtle hover effect to the banner */
+.banner:hover .banner-image {
+  transform: scale(1.03); /* Slightly zoom in */
+  transition: transform 0.5s ease;
+}
+
+.banner:hover .banner-overlay {
+    background-color: rgba(0, 0, 0, 0.6); /* Slightly darker overlay on hover */
+    transition: background-color 0.5s ease;
+}
+
+/* If this class is still used elsewhere in Header.js or globally and needed */
 .min-widthheader {
 	min-width: 380px;
-}
-.min-widthheaderimg {
-	min-width: 80px;
 }

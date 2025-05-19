@@ -1,9 +1,8 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-
-import NavbarPage from "../NavbarPage/NavbarPage"; // Assuming you still want the Navbar here
-import Footer from '../Footer/Footer'; // Import the Footer component
-
+import NavbarPage from "../NavbarPage/NavbarPage";
+import Footer from '../Footer/Footer';
+import './Home.css';
 
 const Home = () => {
 	return (
