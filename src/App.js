@@ -5,6 +5,7 @@ import Home from "./components/Home/Home";
 import Questions from "./components/IndividualTopics/React/ReactQuestions";
 import Topics4 from "./components/ExamSubjects/Topics4";
 import Blog from "./components/Blog/Blog";
+import ArticleDetail from "./components/Blog/ArticleDetail";
 import ExamSubjects from "./components/ExamSubjects/ExamSubjects";
 import Header from "./components/Header/Header";
 import Erroralert from "./components/Erroralert/Erroralert";
@@ -47,6 +48,11 @@ function App() {
 					path: "/blog",
 
 					element: <Blog></Blog>,
+				},
+
+				{
+					path: "/blog/:id",
+					element: <ArticleDetail></ArticleDetail>,
 				},
 
 				{
