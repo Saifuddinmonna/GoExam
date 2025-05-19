@@ -1,38 +1,52 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Topics4 = ({ topic }) => {
-	console.log(topic);
 	const { id, name, logo, total } = topic;
 	return (
-		<div className="border rounded min-widthheader bg-slate-100  m-3 p-3 shadow text-center md:flex md:justify-around md:items-center">
-			<div className="text-center min-widthheaderimg bg-slate-50 rounded-xl">
+		<motion.div 
+			initial={{ opacity: 0, y: 20 }}
+			animate={{ opacity: 1, y: 0 }}
+			whileHover={{ y: -5 }}
+			transition={{ duration: 0.3 }}
+			className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
+		>
+			{/* Image Container */}
+			<motion.div 
+				className="bg-gray-50 p-6 flex justify-center items-center"
+				whileHover={{ scale: 1.05 }}
+				transition={{ duration: 0.2 }}
+			>
 				<img
-					className="img-fluid position-center bg-slate-200 rounded-xl mx-auto"
+					className="w-32 h-32 object-contain"
 					src={logo}
-					alt=""
+					alt={name}
 				/>
-			</div>
+			</motion.div>
 
-			<div>
-				<div className="fw-bolder p-2 border rounded m-2 fs-3 ">
+			{/* Content Container */}
+			<div className="p-6">
+				<motion.h3 
+					className="text-xl font-bold text-gray-800 mb-2"
+					whileHover={{ scale: 1.02 }}
+				>
 					{name}
-				</div>
-				<div>
-					{" "}
-					<p className="fw-bolder p-2 border rounded m-2 fs-3">
-						Total Question : {total}
-					</p>
-				</div>
-				<div className="fw-bolder p-2 border rounded m-2">
-					<Link to={`/questions/${id} `}>
-						<button className="btn btn-primary w-full">
-							Practice
-						</button>
-					</Link>
-				</div>
+				</motion.h3>
+				<p className="text-gray-600 mb-4">
+					Total Questions: <span className="font-semibold">{total}</span>
+				</p>
+				<Link to={`/questions/${id}`} className="block">
+					<motion.button 
+						whileHover={{ scale: 1.05 }}
+						whileTap={{ scale: 0.95 }}
+						className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300"
+					>
+						Start Practice
+					</motion.button>
+				</Link>
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 
