@@ -36,25 +36,25 @@ const Home = () => {
             icon: <FaHtml5 />,
             title: "HTML",
             description: "Learn the structure of web pages using HTML.",
-            link: "/topics/html"
+            link: "/topics/1"
         },
         {
             icon: <FaCss3Alt />,
             title: "CSS",
             description: "Style your web pages beautifully with CSS.",
-            link: "/topics/css"
+            link: "/topics/2"
         },
         {
             icon: <FaJs />,
             title: "JavaScript",
             description: "Add interactivity to your websites using JavaScript.",
-            link: "/topics/javascript"
+            link: "/topics/3"
         },
         {
             icon: <FaReact />,
             title: "React",
             description: "Build dynamic user interfaces using React.",
-            link: "/topics/react"
+            link: "/topics/4"
         }
     ];
 
@@ -152,9 +152,28 @@ const Home = () => {
                                     <div className="text-4xl text-indigo-600 mb-4">{topic.icon}</div>
                                     <h3 className="text-xl font-semibold text-gray-800 mb-2">{topic.title}</h3>
                                     <p className="text-gray-600">{topic.description}</p>
+									
                                 </motion.div>
                             ))}
                         </div>
+						<motion.div 
+							initial={{ opacity: 0, y: 20 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.5 }}
+							className="text-center mt-8"
+						>
+							<motion.button
+								whileHover={{ scale: 1.05 }}
+								whileTap={{ scale: 0.95 }}
+								onClick={() => navigate('/topics')}
+								className="inline-flex items-center gap-2 bg-indigo-600 text-white px-6 py-3 rounded-full font-semibold shadow-md hover:shadow-xl transition-all duration-300"
+							>
+								View More Topics
+								<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+									<path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+								</svg>
+							</motion.button>
+						</motion.div>
                     </div>
                 </div>
 
