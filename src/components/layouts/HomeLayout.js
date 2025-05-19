@@ -35,7 +35,7 @@ const HomeLayout = () => {
 	return (
 		<div className="min-h-screen flex flex-col">
 			<NavbarPage />
-            <Home> </Home>
+         
             <Outlet  />
 			<Footer />
 		</div>

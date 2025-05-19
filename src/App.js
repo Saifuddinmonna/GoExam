@@ -32,6 +32,10 @@ function App() {
 					element: <Blog />,
 				},
 				{
+					path: "/",
+					element: <Home/>,
+				},
+				{
 					path: "/blog/:id",
 					element: <ArticleDetail />,
 				},
