@@ -1,61 +1,121 @@
-import { click } from "@testing-library/user-event/dist/click";
-import React from "react";
+import React, { useState } from "react";
 import { EyeIcon } from "@heroicons/react/24/solid";
+import { motion, AnimatePresence } from "framer-motion";
 
-const Question = ({ singlequestion }) => {
+const Question = ({ singlequestion, onAnswer }) => {
 	const { options, id, question, correctAnswer } = singlequestion;
-	console.log(correctAnswer);
-	const ShowcorrectAnswer = (correctAnswer) => {
-		alert(`Correct Answer is : ${correctAnswer}`);
-	};
-	const AnswerCheck = (e) => {
-		console.log(correctAnswer);
-		console.log(e.target.innerText);
-		const TrickAnswer = e.target.innerText;
-		if (TrickAnswer === correctAnswer) {
-			setTimeout(() => {
-				alert("Answer is correct");
-			}, 400);
-			clearInterval(alert);
-		} else {
-			setTimeout(() => {
-				alert("Answer is incorrect");
-			}, 400);
-		}
+	const [showAnswer, setShowAnswer] = useState(false);
+	const [selectedAnswer, setSelectedAnswer] = useState(null);
+	const [isCorrect, setIsCorrect] = useState(null);
+	const [hasAnswered, setHasAnswered] = useState(false);
+
+	const ShowcorrectAnswer = () => {
+		setShowAnswer(!showAnswer);
 	};
 
-	
+	const AnswerCheck = (e) => {
+		if (hasAnswered) return; // Prevent multiple answers
+		
+		const selectedOption = e.target.innerText;
+		setSelectedAnswer(selectedOption);
+		const isAnswerCorrect = selectedOption === correctAnswer;
+		setIsCorrect(isAnswerCorrect);
+		setHasAnswered(true);
+		
+		// Call the parent's onAnswer callback
+		onAnswer(isAnswerCorrect);
+	};
 
 	return (
-		<div className=" min-widthheader position-relative border m-3 p-3 rounded-xl shadow-lg bg-orange-50 mx-2 ">
-			<div></div>
-			<div
-				onClick={() => ShowcorrectAnswer(correctAnswer)}
-				data-tooltip-target="tooltip-default"
-				min-widthheader
-				className=" btn-sm cursor-pointer position-absolute rounded-circle border border-red-400 border-4 bg-blue-100 top-0 left-0 ">
-				{" "}
-				<EyeIcon className="h-4 w-4 text-blue-500" />
-			</div>
+		<motion.div
+			initial={{ opacity: 0, y: 20 }}
+			animate={{ opacity: 1, y: 0 }}
+			transition={{ duration: 0.5 }}
+			className="relative border m-4 p-6 rounded-2xl shadow-xl bg-gradient-to-br from-indigo-50 to-purple-50 hover:shadow-2xl transition-shadow duration-300"
+		>
+			<motion.div
+				whileHover={{ scale: 1.1 }}
+				whileTap={{ scale: 0.95 }}
+				onClick={ShowcorrectAnswer}
+				className="absolute -top-3 -left-3 cursor-pointer rounded-full border-2 border-indigo-400 bg-white p-2 shadow-md hover:bg-indigo-50 transition-colors duration-200"
+			>
+				<EyeIcon className="h-5 w-5 text-indigo-600" />
+			</motion.div>
 
-			<div></div>
-
-			<div>
-				<p>{question}</p>
-				<div>
-					{options.map((singleoption,Index) => (
-						<ol key={Index}>
-							<li
+			<motion.h3 
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ delay: 0.2 }}
+				className="text-xl font-semibold text-gray-800 mb-6"
+			>
+				{question}
+			</motion.h3>
+			
+			<div className="space-y-3">
+				<AnimatePresence>
+					{options.map((singleoption, index) => (
+						<motion.div
+							key={index}
+							initial={{ opacity: 0, x: -20 }}
+							animate={{ opacity: 1, x: 0 }}
+							transition={{ delay: index * 0.1 }}
+							whileHover={{ scale: hasAnswered ? 1 : 1.02 }}
+							whileTap={{ scale: hasAnswered ? 1 : 0.98 }}
+						>
+							<button
 								onClick={AnswerCheck}
-								className="btn  w-full btn-outline-info list-group-numbered  ">
-								{singleoption}
-							</li>
-						</ol>
+								disabled={hasAnswered}
+								className={`w-full text-left px-4 py-3 rounded-lg bg-white border transition-all duration-200 shadow-sm hover:shadow-md ${
+									selectedAnswer === singleoption
+										? isCorrect
+											? "border-green-500 bg-green-50"
+											: "border-red-500 bg-red-50"
+										: singleoption === correctAnswer && hasAnswered
+											? "border-green-500 bg-green-50"
+											: "border-gray-200 hover:border-indigo-400 hover:bg-indigo-50"
+								} ${hasAnswered ? "cursor-default" : ""}`}
+							>
+								<span className="text-gray-700">{singleoption}</span>
+							</button>
+						</motion.div>
 					))}
-				</div>
+				</AnimatePresence>
 			</div>
-			<div></div>
-		</div>
+
+			{/* Feedback Section */}
+			<AnimatePresence>
+				{selectedAnswer && (
+					<motion.div
+						initial={{ opacity: 0, y: 10 }}
+						animate={{ opacity: 1, y: 0 }}
+						exit={{ opacity: 0, y: -10 }}
+						className={`mt-4 p-3 rounded-lg ${
+							isCorrect ? "bg-green-100 border-green-200" : "bg-red-100 border-red-200"
+						} border`}
+					>
+						<p className={`text-sm font-medium ${isCorrect ? "text-green-700" : "text-red-700"}`}>
+							{isCorrect ? "✓ Correct answer!" : "✗ Incorrect answer"}
+						</p>
+					</motion.div>
+				)}
+			</AnimatePresence>
+
+			{/* Correct Answer Section */}
+			<AnimatePresence>
+				{showAnswer && (
+					<motion.div
+						initial={{ opacity: 0, y: 10 }}
+						animate={{ opacity: 1, y: 0 }}
+						exit={{ opacity: 0, y: -10 }}
+						className="mt-4 p-3 rounded-lg bg-indigo-100 border border-indigo-200"
+					>
+						<p className="text-sm font-medium text-indigo-700">
+							Correct Answer: {correctAnswer}
+						</p>
+					</motion.div>
+				)}
+			</AnimatePresence>
+		</motion.div>
 	);
 };
 
@@ -68,3 +128,4 @@ export default Question;
     <div class="tooltip-arrow" data-popper-arrow="" style="position: absolute; left: 0px; transform: translate(0px, 0px);"></div>
 </div> */
 }
+

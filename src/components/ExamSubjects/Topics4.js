@@ -79,7 +79,7 @@ const Topics4 = ({ topic }) => {
 					<p className="text-xs text-gray-500 mt-1">Start learning to track progress</p>
 				</div>
 
-				<Link to={`/questions/${id}`} className="block">
+				<Link to={`/topics/${id}`} className="block">
 					<motion.button 
 						whileHover={{ scale: 1.05 }}
 						whileTap={{ scale: 0.95 }}
